@@ -671,7 +671,7 @@ void setup() {
     /**
     ** @@RC SETUP
     **/
-    //setupHook(); // DEPUIS LA V2, VOIR LE BAS DU SKETCH POUR VOS INTEGRATIONS
+    setupHook(); // DEPUIS LA V2, VOIR LE BAS DU SKETCH POUR VOS INTEGRATIONS
     //--------------------------------------------------------------------------------------------------------------------------------------------------
     delay(1000);
     Serial.println("HELLO");
