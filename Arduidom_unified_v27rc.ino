@@ -1352,40 +1352,37 @@ if (Serial.available() > 0) serialEvent();
 // Votre partie "setup" perso ici (ne s'executera qu'une fois au demarrage de l'arduino)
 //
 
-void setupHook() {
 
+/**
+** Add your custom code here,
+** Method call inside the setup
+**
+** @@RC setupHook
+**/
+void setupHook () {
+	// init CustomValues
+	for ( int ic = 0 ; ic < CNF_NB_CPIN ; ic++ ) {
+		CustomValue[ic] = 0.0;
+		OldCValue[ic] = CustomValue[ic];
+	}
+	// init lastvalue
+	for ( int ii = 0; ii < CNF_NB_DPIN + CNF_NB_APIN + CNF_NB_CPIN; ii++ ) {
+		LastSend[ii] = 0;
+	}
+	//@@RC workarround of bug FIX17 STRANGE BUG IN MEMORY
+	for (byte td= 0; td < CNF_NB_DPIN; td++) {
+		TimerDelays[td] =0;
+	}
+	
+	
+} // setupHook
 
-
-}
 //
 // Add your custom code here, Method call inside the main loop to manage custom values
 //
 // PLACER CI DESSOUS VOS COMMANDES PERSO POUR LES CUSTOMS (Executé toutes les 30 Secondes par défaut.
 //
 
-			/**
-			** Add your custom code here,
-			** Method call inside the setup
-			**
-			** @@RC setupHook
-			**/
-			void setupHook () {
-				// init CustomValues
-				for ( int ic = 0 ; ic < CNF_NB_CPIN ; ic++ ) {
-					CustomValue[ic] = 0.0;
-					OldCValue[ic] = CustomValue[ic];
-				}
-				// init lastvalue
-				for ( int ii = 0; ii < CNF_NB_DPIN + CNF_NB_APIN + CNF_NB_CPIN; ii++ ) {
-					LastSend[ii] = 0;
-				}
-				//@@RC workarround of bug FIX17 STRANGE BUG IN MEMORY
-				for (byte td= 0; td < CNF_NB_DPIN; td++) {
-					TimerDelays[td] =0;
-				}
-				
-				
-			} // setupHook
 
 
 			/**
